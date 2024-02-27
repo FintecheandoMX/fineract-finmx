@@ -129,7 +129,7 @@ public class SavingsAccountDataValidator {
 
         if (this.fromApiJsonHelper.parameterExists(accountNoParamName, element)) {
             final String accountNo = this.fromApiJsonHelper.extractStringNamed(accountNoParamName, element);
-            baseDataValidator.reset().parameter(accountNoParamName).value(accountNo).notBlank().notExceedingLengthOf(20);
+            baseDataValidator.reset().parameter(accountNoParamName).value(accountNo).notBlank().notExceedingLengthOf(64);
         }
 
         if (this.fromApiJsonHelper.parameterExists(externalIdParamName, element)) {
@@ -334,7 +334,7 @@ public class SavingsAccountDataValidator {
 
         if (this.fromApiJsonHelper.parameterExists(accountNoParamName, element)) {
             final String accountNo = this.fromApiJsonHelper.extractStringNamed(accountNoParamName, element);
-            baseDataValidator.reset().parameter(accountNoParamName).value(accountNo).notBlank().notExceedingLengthOf(20);
+            baseDataValidator.reset().parameter(accountNoParamName).value(accountNo).notBlank().notExceedingLengthOf(64);
         }
 
         if (this.fromApiJsonHelper.parameterExists(externalIdParamName, element)) {
