@@ -141,7 +141,7 @@ public class SavingsAccount extends AbstractAuditableWithUTCDateTimeCustom {
     @Version
     int version;
 
-    @Column(name = "account_no", length = 20, unique = true, nullable = false)
+    @Column(name = "account_no", length = 64, unique = true, nullable = false)
     protected String accountNumber;
 
     @Column(name = "external_id", nullable = true)
