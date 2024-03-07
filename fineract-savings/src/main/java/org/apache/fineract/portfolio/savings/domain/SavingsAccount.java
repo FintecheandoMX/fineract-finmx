@@ -2625,12 +2625,13 @@ public class SavingsAccount extends AbstractAuditableWithUTCDateTimeCustom {
 
         final DateTimeFormatter fmt = DateTimeFormatter.ofPattern(command.dateFormat()).withLocale(command.extractLocale());
         final LocalDate activationDate = command.localDateValueOfParameterNamed(SavingsApiConstants.activatedOnDateParamName);
+        final String approvedOnDate = command.stringValueOfParameterNamed(SavingsApiConstants.activatedOnDateParamName);
         
         this.status = SavingsAccountStatusType.ACTIVE.getValue();
         actualChanges.put(SavingsApiConstants.statusParamName, SavingsEnumerations.status(this.status));
         actualChanges.put(SavingsApiConstants.localeParamName, command.locale());
         actualChanges.put(SavingsApiConstants.dateFormatParamName, command.dateFormat());
-        actualChanges.put(SavingsApiConstants.activatedOnDateParamName, activationDate.format(fmt));
+        actualChanges.put(SavingsApiConstants.activatedOnDateParamName, approvedOnDate);
 
         this.rejectedOnDate = null;
         this.rejectedBy = null;
