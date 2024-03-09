@@ -1251,8 +1251,9 @@ public class SavingsAccount extends AbstractAuditableWithUTCDateTimeCustom {
         }
 
         if (DateUtils.isBefore(transactionDTO.getTransactionDate(), getActivationDate())) {
-            final Object[] defaultUserArgs = Arrays.asList(transactionDTO.getTransactionDate().format(transactionDTO.getFormatter()),
-                    getActivationDate().format(transactionDTO.getFormatter())).toArray();
+            
+            final Object[] defaultUserArgs = Arrays.asList(transactionDTO.getTransactionDate().toString(),
+                    getActivationDate().toString()).toArray();
             final String defaultUserMessage = "Transaction date cannot be before accounts activation date.";
             final ApiParameterError error = ApiParameterError.parameterError("error.msg.savingsaccount.transaction.before.activation.date",
                     defaultUserMessage, "transactionDate", defaultUserArgs);
