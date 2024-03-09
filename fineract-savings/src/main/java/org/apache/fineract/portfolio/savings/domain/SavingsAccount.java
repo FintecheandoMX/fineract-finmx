@@ -1250,6 +1250,7 @@ public class SavingsAccount extends AbstractAuditableWithUTCDateTimeCustom {
             throw new PlatformApiDataValidationException(dataValidationErrors);
         }
 
+        /*
         if (DateUtils.isBefore(transactionDTO.getTransactionDate(), getActivationDate())) {
             
             final Object[] defaultUserArgs = Arrays.asList(transactionDTO.getTransactionDate().toString(),
@@ -1262,7 +1263,7 @@ public class SavingsAccount extends AbstractAuditableWithUTCDateTimeCustom {
             dataValidationErrors.add(error);
 
             throw new PlatformApiDataValidationException(dataValidationErrors);
-        }
+        }*/
 
         if (isAccountLocked(transactionDTO.getTransactionDate())) {
             final String defaultUserMessage = "Withdrawal is not allowed. No withdrawals are allowed until after "
