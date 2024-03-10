@@ -1250,11 +1250,9 @@ public class SavingsAccount extends AbstractAuditableWithUTCDateTimeCustom {
             throw new PlatformApiDataValidationException(dataValidationErrors);
         }
 
-        /*
         if (DateUtils.isBefore(transactionDTO.getTransactionDate(), getActivationDate())) {
-            
-            final Object[] defaultUserArgs = Arrays.asList(transactionDTO.getTransactionDate().toString(),
-                    getActivationDate().toString()).toArray();
+            final Object[] defaultUserArgs = Arrays.asList(transactionDTO.getTransactionDate().format(transactionDTO.getFormatter()),
+                    getActivationDate().format(transactionDTO.getFormatter())).toArray();
             final String defaultUserMessage = "Transaction date cannot be before accounts activation date.";
             final ApiParameterError error = ApiParameterError.parameterError("error.msg.savingsaccount.transaction.before.activation.date",
                     defaultUserMessage, "transactionDate", defaultUserArgs);
@@ -1263,7 +1261,7 @@ public class SavingsAccount extends AbstractAuditableWithUTCDateTimeCustom {
             dataValidationErrors.add(error);
 
             throw new PlatformApiDataValidationException(dataValidationErrors);
-        }*/
+        }
 
         if (isAccountLocked(transactionDTO.getTransactionDate())) {
             final String defaultUserMessage = "Withdrawal is not allowed. No withdrawals are allowed until after "
